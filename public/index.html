@@ -1,22 +1,122 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Lee Vaakki™ Pvt Ltd</title>
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; display: flex; align-items: center; justify-content: center; height: 100vh; }
-      #message { background: white; width: 80%; max-width: 400px; padding: 32px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); text-align: center; }
-      h2 { color: #4CAF50; font-weight: bold; font-size: 24px; margin: 0 0 16px; }
-      p { line-height: 140%; margin: 16px 0 24px; font-size: 16px; }
-      .brand { color: #FFC107; font-weight: bold; }
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaakki Cafe - Digital Ecosystem</title>
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --secondary: #FFC107;
+            --bg: #ECEFF1;
+            --text: rgba(0,0,0,0.87);
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        .logo span { color: var(--secondary); }
+        nav a {
+            margin-left: 1.5rem;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+        }
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: white;
+            margin-bottom: 2rem;
+        }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto 2rem; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: var(--primary); margin-top: 0; }
+        footer {
+            margin-top: auto;
+            padding: 2rem;
+            text-align: center;
+            background: #263238;
+            color: white;
+        }
+        .btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
     </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Lee Vaakki™ <span class="brand">Pvt Ltd</span></h2>
-      <p>Multi-Flavor Digital Ecosystem: Cafe, Dhaba, and Farm.</p>
-      <p>Mobile app coming soon!</p>
-    </div>
-  </body>
+</head>
+<body>
+    <header>
+        <div class="logo">Vaakki <span>Cafe</span></div>
+        <nav>
+            <a href="#">Menu</a>
+            <a href="#">Dhaba</a>
+            <a href="#">Farm</a>
+            <a href="#">Admin</a>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Multi-Flavor Digital Ecosystem</h1>
+            <p>Integrating Cafe, Dhaba, and Farm management into one seamless mobile experience.</p>
+            <a href="#" class="btn">Coming Soon to App Store</a>
+        </section>
+        <div class="grid">
+            <div class="card">
+                <h3>Cafe Management</h3>
+                <p>Real-time order tracking, digital menu management, and inventory control for modern cafes.</p>
+            </div>
+            <div class="card">
+                <h3>Dhaba Services</h3>
+                <p>Authentic taste meets digital efficiency. Manage sales analytics and customer orders effortlessly.</p>
+            </div>
+            <div class="card">
+                <h3>Farm to Table</h3>
+                <p>Direct supply chain management connecting local farms with our digital ecosystem.</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 Lee Vaakki™ Pvt Ltd. All rights reserved.</p>
+    </footer>
+</body>
 </html>
