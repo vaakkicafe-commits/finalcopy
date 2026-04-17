@@ -1,0 +1,12 @@
+{
+  "name": "lee-vaakki-pvt-ltd",
+  "version": "1.0.0",
+  "description": "Android App and Website Integration Tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "devDependencies": {
+    "cypress": "^13.17.0"
+  }
+}

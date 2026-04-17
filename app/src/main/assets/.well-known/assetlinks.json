@@ -1,0 +1,26 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.leevaakki.cafe",
+      "sha256_cert_fingerprints": [
+        "FA:C6:17:45:DC:09:03:78:6F:B9:ED:46:28:C3:93:EE:00:1C:95:49:31:5F:29:3F:8D:18:01:4F:97:A1:64:99"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.leevaakki.dhaba",
+      "sha256_cert_fingerprints": [
+        "FA:C6:17:45:DC:09:03:78:6F:B9:ED:46:28:C3:93:EE:00:1C:95:49:31:5F:29:3F:8D:18:01:4F:97:A1:64:99"
+      ]
+    }
+  }
+]
