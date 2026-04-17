@@ -15,30 +15,52 @@ class WordPressRepository @Inject constructor(
 ) {
     suspend fun fetchMenu(baseUrl: String): List<MenuItem> {
         return try {
-            val response: String = client.get("$baseUrl/wp-json/wp/v2/posts?category_name=menu_items&_embed").body()
+            // We use category_name=menu_items. Ensure this slug exists in WP Categories.
+            val url = "$baseUrl/wp-json/wp/v2/posts?category_name=menu_items&_embed&per_page=100"
+            val response: String = client.get(url).body()
             val jsonArray = Json.parseToJsonElement(response).jsonArray
             
             jsonArray.mapNotNull { element ->
-                val obj = element.jsonObject
-                val acf = obj["acf"]?.jsonObject
-                val meta = obj["meta"]?.jsonObject
-                val priceValue = acf?.get("price")?.jsonPrimitive?.doubleOrNull 
-                    ?: meta?.get("price")?.jsonPrimitive?.doubleOrNull
-                    ?: 0.0
+                try {
+                    val obj = element.jsonObject
+                    val acf = obj["acf"]?.jsonObject
+                    val meta = obj["meta"]?.jsonObject
+                    
+                    // 1. Robust Price Parsing
+                    val priceValue = acf?.get("price")?.jsonPrimitive?.doubleOrNull 
+                        ?: meta?.get("price")?.jsonPrimitive?.doubleOrNull
+                        ?: obj["price"]?.jsonPrimitive?.doubleOrNull // Check top level too
+                        ?: 0.0
 
-                val featuredMediaUrl = obj["featured_media_url"]?.jsonPrimitive?.contentOrNull ?: ""
-                val embeddedMedia = obj["_embedded"]?.jsonObject?.get("wp:featuredmedia")?.jsonArray?.getOrNull(0)?.jsonObject
-                val sourceUrl = embeddedMedia?.get("source_url")?.jsonPrimitive?.contentOrNull ?: ""
-                val imageUrl = featuredMediaUrl.ifEmpty { sourceUrl }
+                    // 2. Robust Image Parsing
+                    val featuredMediaUrl = obj["featured_media_url"]?.jsonPrimitive?.contentOrNull ?: ""
+                    
+                    // Try to get from _embedded if featured_media_url is missing
+                    val embeddedMedia = obj["_embedded"]?.jsonObject?.get("wp:featuredmedia")?.jsonArray?.getOrNull(0)?.jsonObject
+                    val sourceUrl = embeddedMedia?.get("source_url")?.jsonPrimitive?.contentOrNull ?: ""
+                    
+                    // Fallback to searching content for first <img> tag if both above fail
+                    val contentHtml = obj["content"]?.jsonObject?.get("rendered")?.jsonPrimitive?.content ?: ""
+                    val fallbackImg = if (sourceUrl.isEmpty() && featuredMediaUrl.isEmpty()) {
+                         val match = Regex("<img [^>]*src=\"([^\"]+)\"").find(contentHtml)
+                         match?.groups?.get(1)?.value ?: ""
+                    } else ""
 
-                MenuItem(
-                    id = obj["id"]?.jsonPrimitive?.content ?: return@mapNotNull null,
-                    name = obj["title"]?.jsonObject?.get("rendered")?.jsonPrimitive?.content ?: "Untitled",
-                    price = priceValue,
-                    category = "WordPress",
-                    imageUrl = imageUrl,
-                    isAvailable = true
-                )
+                    val imageUrl = featuredMediaUrl.ifEmpty { sourceUrl.ifEmpty { fallbackImg } }
+
+                    MenuItem(
+                        id = obj["id"]?.jsonPrimitive?.content ?: return@mapNotNull null,
+                        name = obj["title"]?.jsonObject?.get("rendered")?.jsonPrimitive?.content ?: "Untitled",
+                        description = obj["excerpt"]?.jsonObject?.get("rendered")?.jsonPrimitive?.content ?: "",
+                        price = priceValue,
+                        category = "WordPress",
+                        imageUrl = imageUrl,
+                        isAvailable = true
+                    )
+                } catch (e: Exception) {
+                    Log.e("WordPressRepository", "Error parsing individual item: ${e.message}")
+                    null
+                }
             }
         } catch (e: Exception) {
             Log.e("WordPressRepository", "Menu Fetch Error: ${e.message}")

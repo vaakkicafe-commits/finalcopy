@@ -103,9 +103,10 @@ fun LoginAndDataScreen(
                 shape = RoundedCornerShape(12.dp)
             )
 
-            if (errorMessage != null) {
+            val currentError = errorMessage
+            if (currentError != null) {
                 Text(
-                    text = errorMessage!!,
+                    text = currentError,
                     color = MaterialTheme.colorScheme.error,
                     style = MaterialTheme.typography.labelMedium,
                     modifier = Modifier.padding(top = 8.dp)

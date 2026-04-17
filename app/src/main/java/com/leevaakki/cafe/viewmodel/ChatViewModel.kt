@@ -17,7 +17,7 @@ import com.leevaakki.cafe.data.repository.ChatRepository
 import com.leevaakki.cafe.data.repository.JhattseRepository
 import com.leevaakki.cafe.data.repository.WordPressRepository
 import com.leevaakki.cafe.di.NetworkModule
-import com.leevaakki.cafe.MainActivity
+import com.leevaakki.cafe.PaymentCallbacks
 import com.leevaakki.cafe.models.*
 import com.razorpay.Checkout
 import kotlinx.coroutines.delay
@@ -462,10 +462,10 @@ class ChatViewModel : ViewModel() {
             options.put("prefill.email", userEmail ?: "customer@example.com")
             options.put("prefill.contact", userPhone ?: "")
 
-            MainActivity.onPaymentSuccess = { paymentId ->
+            PaymentCallbacks.onPaymentSuccess = { paymentId ->
                 placeOrder(paymentId, total)
             }
-            MainActivity.onPaymentError = { code, response ->
+            PaymentCallbacks.onPaymentError = { code, response ->
                 isProcessingPayment.value = false
                 paymentStatus.value = "Payment failed: $response"
             }

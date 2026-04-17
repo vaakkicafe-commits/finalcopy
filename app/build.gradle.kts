@@ -74,6 +74,7 @@ android {
 
     kotlinOptions {
         jvmTarget = "17"
+        freeCompilerArgs += listOf("-P", "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true")
     }
 
 
@@ -137,6 +138,12 @@ android {
 }
 
 dependencies {
+    constraints {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.10")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib:2.1.10")
+        implementation("org.jetbrains.kotlin:kotlin-reflect:2.1.10")
+    }
+
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.auth)
