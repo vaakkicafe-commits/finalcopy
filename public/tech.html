@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LV Tech - Software & AI Division | Lee Vaakki</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --primary-glow: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            --accent-glow: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Subtle grid background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        header {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 90%;
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            background: var(--primary-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-back {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-back:hover {
+            color: var(--text-primary);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 4rem auto;
+            width: 90%;
+            flex-grow: 1;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #00f2fe;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 0 0 1rem 0;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-glow);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 242, 254, 0.4);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin: 0 0 1rem 0;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0 0 2rem 0;
+            flex-grow: 1;
+        }
+
+        .btn-launch {
+            background: var(--primary-glow);
+            color: #000000;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            transition: transform 0.2s, opacity 0.2s;
+            display: inline-block;
+        }
+
+        .btn-launch:hover {
+            transform: scale(1.02);
+            opacity: 0.95;
+        }
+
+        .card.upcoming::before {
+            background: var(--accent-glow);
+        }
+
+        .card.upcoming:hover {
+            border-color: rgba(255, 8, 68, 0.4);
+        }
+
+        .card.upcoming .badge-upcoming {
+            background: rgba(255, 8, 68, 0.1);
+            color: #ff0844;
+            border: 1px solid rgba(255, 8, 68, 0.2);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+            align-self: flex-start;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">LV Tech</div>
+        <a href="/" class="nav-back">← Back to Brand Home</a>
+    </header>
+
+    <main>
+        <section class="hero">
+            <span class="badge">Software Division</span>
+            <h1>The LV Tech Portal</h1>
+            <p>Powering your digital systems with state-of-the-art enterprise tools, POS suites, and custom AI studio models.</p>
+        </section>
+
+        <div class="grid">
+            <!-- KIAI -->
+            <div class="card">
+                <div>
+                    <h2>KIAI Studio</h2>
+                    <p>Next-generation generative studio engine. Fully integrated AI creator dashboards with high-performance video, audio, and avatar workflows.</p>
+                </div>
+                <a href="https://kiai.leevaakki.com" target="_blank" class="btn-launch">Launch Dashboard</a>
+            </div>
+
+            <!-- EasyToBill -->
+            <div class="card">
+                <div>
+                    <h2>EasyToBill POS</h2>
+                    <p>Professional point-of-sale invoicing suite. Manage sales analytics, live order syncs, inventory databases, and direct cashier billing.</p>
+                </div>
+                <a href="https://easytobill.leevaakki.com" target="_blank" class="btn-launch">Launch App</a>
+            </div>
+
+            <!-- Marine LMS -->
+            <div class="card">
+                <div>
+                    <h2>Marine LMS</h2>
+                    <p>Robust training modules and learning management system designed specifically for maritime cadets and coaching networks.</p>
+                </div>
+                <a href="https://marine.leevaakki.com" target="_blank" class="btn-launch">Launch Platform</a>
+            </div>
+
+            <!-- Upcoming Pos -->
+            <div class="card upcoming">
+                <div>
+                    <span class="badge-upcoming">Coming Soon</span>
+                    <h2>LV POS Enterprise</h2>
+                    <p>Advanced cross-terminal software built for larger franchise networks, integrated directly with Farm-to-Table logistics.</p>
+                </div>
+                <a href="#" class="btn-launch" style="background: rgba(255,255,255,0.05); color: #fff; border: 1px solid var(--border-color); cursor: not-allowed; pointer-events: none;">In Development</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Lee Vaakki™ Pvt Ltd. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "cleanUrls": true,
+  "routes": [
+    { "src": "/farm.html", "dest": "/public/farm.html" },
+    { "src": "/tech.html", "dest": "/public/tech.html" },
+    { "src": "/index.html", "dest": "/public/index.html" },
+    { "src": "/", "dest": "/public/index.html" },
+    { "src": "/(.*)", "dest": "/public/$1" }
+  ]
+}

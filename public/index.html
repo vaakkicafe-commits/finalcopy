@@ -86,37 +86,216 @@
 </head>
 <body>
     <header>
-        <div class="logo">Vaakki <span>Cafe</span></div>
+        <div class="logo">Lee Vaakki <span>Pvt Ltd</span></div>
         <nav>
-            <a href="#">Menu</a>
-            <a href="#">Dhaba</a>
-            <a href="#">Farm</a>
-            <a href="#">Admin</a>
+            <a href="https://leevaakkicafe.com" target="_blank">Cafe</a>
+            <a href="https://leevaakkidhaba.com" target="_blank">Dhaba</a>
+            <a href="/farm.html">Farm</a>
+            <a href="/tech.html">LV Tech</a>
+            <a href="#" id="google-login-btn" style="cursor: pointer;">Google Login</a>
         </nav>
     </header>
     <main>
         <section class="hero">
-            <h1>Multi-Flavor Digital Ecosystem</h1>
-            <p>Integrating Cafe, Dhaba, and Farm management into one seamless mobile experience.</p>
-            <a href="#" class="btn">Coming Soon to App Store</a>
+            <h1 style="font-size: 2.8rem; font-weight: 800; letter-spacing: -0.03em; background: linear-gradient(135deg, #4CAF50 0%, #FFC107 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">Cafe. Dhaba. Farm. LV Tech. Marine.</h1>
+            <p style="font-size: 1.25rem; color: #666; max-width: 700px; margin: 0 auto 2rem; line-height: 1.6;">Lee Vaakki Pvt Ltd connects hospitality, farm-to-table supply, AI-powered software, and maritime learning under a single brand universe.</p>
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="https://leevaakkicafe.com" target="_blank" class="btn" style="background: #4CAF50; font-weight: 600; padding: 0.8rem 1.6rem;">Visit Cafe</a>
+                <a href="/tech.html" class="btn" style="background: #263238; font-weight: 600; padding: 0.8rem 1.6rem;">Explore LV Tech</a>
+            </div>
         </section>
         <div class="grid">
             <div class="card">
                 <h3>Cafe Management</h3>
                 <p>Real-time order tracking, digital menu management, and inventory control for modern cafes.</p>
+                <a href="https://leevaakkicafe.com" target="_blank" class="btn" style="margin-top: 1rem; display: inline-block; font-size: 0.9rem; padding: 0.6rem 1.2rem;">Open Cafe Site</a>
             </div>
             <div class="card">
                 <h3>Dhaba Services</h3>
                 <p>Authentic taste meets digital efficiency. Manage sales analytics and customer orders effortlessly.</p>
+                <a href="https://leevaakkidhaba.com" target="_blank" class="btn" style="margin-top: 1rem; display: inline-block; font-size: 0.9rem; padding: 0.6rem 1.2rem;">Open Dhaba Site</a>
             </div>
-            <div class="card">
+            <div class="card" id="farm">
                 <h3>Farm to Table</h3>
                 <p>Direct supply chain management connecting local farms with our digital ecosystem.</p>
+                <a href="/farm.html" class="btn" style="margin-top: 1rem; display: inline-block; font-size: 0.9rem; padding: 0.6rem 1.2rem; background: #4CAF50;">Open Farm Site</a>
             </div>
         </div>
+
+        <!-- LV Tech Software Section -->
+        <section id="lv-tech" style="padding: 4rem 2rem; background: #ffffff; border-radius: 8px; border: 1px solid rgba(0,0,0,0.06); margin: 2rem auto; max-width: 1200px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+            <div style="width: 100%;">
+                <!-- Section header -->
+                <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; text-align: left;">
+                    <span style="
+                        align-self: flex-start;
+                        padding: 0.25rem 0.75rem;
+                        border-radius: 9999px;
+                        border: 1px solid rgba(76, 175, 80, 0.3);
+                        font-size: 0.75rem;
+                        letter-spacing: 0.12em;
+                        text-transform: uppercase;
+                        color: #4CAF50;
+                        background: rgba(76, 175, 80, 0.05);
+                        font-weight: 600;
+                    ">
+                        LV Tech · Software Division
+                    </span>
+                    <h2 style="margin: 0; font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text);">
+                        Software that powers Lee Vaakki
+                    </h2>
+                    <p style="margin: 0; max-width: 640px; color: #666; font-size: 0.98rem; line-height: 1.7;">
+                        LV Tech is the product and AI engineering arm of Lee Vaakki™—building creator tooling, billing systems,
+                        and maritime learning platforms that sit behind your cafe, dhaba, and farm operations.
+                    </p>
+                </div>
+
+                <!-- Cards row -->
+                <div style="
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                    gap: 1.5rem;
+                ">
+                    <!-- KIAI -->
+                    <article style="
+                        border-radius: 12px;
+                        border: 1px solid rgba(0, 0, 0, 0.08);
+                        background: #ffffff;
+                        padding: 2rem 1.75rem;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.75rem;
+                        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+                        transition: transform 0.2s, border-color 0.2s;
+                    " onmouseover="this.style.transform='translateY(-4px)'; this.style.borderColor='#4CAF50';" onmouseout="this.style.transform='none'; this.style.borderColor='rgba(0, 0, 0, 0.08)';">
+                        <h3 style="margin: 0; font-size: 1.25rem; font-weight: 700; color: var(--text);">KIAI Studio</h3>
+                        <p style="margin: 0; color: #666; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">
+                            Multimodal influencer studio for creators and brands, with video, audio, and avatar workflows backed
+                            by your own engines.
+                        </p>
+                        <a href="https://kiai.leevaakki.com" target="_blank" style="
+                            margin-top: 0.75rem;
+                            font-size: 0.9rem;
+                            color: #4CAF50;
+                            text-decoration: none;
+                            font-weight: 600;
+                        ">
+                            Open KIAI Studio →
+                        </a>
+                    </article>
+
+                    <!-- EasyToBill -->
+                    <article style="
+                        border-radius: 12px;
+                        border: 1px solid rgba(0, 0, 0, 0.08);
+                        background: #ffffff;
+                        padding: 2rem 1.75rem;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.75rem;
+                        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+                        transition: transform 0.2s, border-color 0.2s;
+                    " onmouseover="this.style.transform='translateY(-4px)'; this.style.borderColor='#4CAF50';" onmouseout="this.style.transform='none'; this.style.borderColor='rgba(0, 0, 0, 0.08)';">
+                        <h3 style="margin: 0; font-size: 1.25rem; font-weight: 700; color: var(--text);">EasyToBill POS</h3>
+                        <p style="margin: 0; color: #666; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">
+                            Unified POS and invoicing for Lee Vaakki outlets and partners—real-time orders, invoices, and
+                            multi-outlet reporting.
+                        </p>
+                        <a href="https://easytobill.leevaakki.com" target="_blank" style="
+                            margin-top: 0.75rem;
+                            font-size: 0.9rem;
+                            color: #4CAF50;
+                            text-decoration: none;
+                            font-weight: 600;
+                        ">
+                            Open EasyToBill →
+                        </a>
+                    </article>
+
+                    <!-- Marine LMS -->
+                    <article style="
+                        border-radius: 12px;
+                        border: 1px solid rgba(0, 0, 0, 0.08);
+                        background: #ffffff;
+                        padding: 2rem 1.75rem;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.75rem;
+                        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+                        transition: transform 0.2s, border-color 0.2s;
+                    " onmouseover="this.style.transform='translateY(-4px)'; this.style.borderColor='#4CAF50';" onmouseout="this.style.transform='none'; this.style.borderColor='rgba(0, 0, 0, 0.08)';">
+                        <h3 style="margin: 0; font-size: 1.25rem; font-weight: 700; color: var(--text);">Marine LMS</h3>
+                        <p style="margin: 0; color: #666; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">
+                            Training and assessment rails for maritime cadets and officers, tightly aligned with your coaching
+                            content and exam flows.
+                        </p>
+                        <a href="https://marine.leevaakki.com" target="_blank" style="
+                            margin-top: 0.75rem;
+                            font-size: 0.9rem;
+                            color: #4CAF50;
+                            text-decoration: none;
+                            font-weight: 600;
+                        ">
+                            Open Marine LMS →
+                        </a>
+                    </article>
+                </div>
+
+                <!-- Link to full hub -->
+                <div style="margin-top: 2.5rem; text-align: left;">
+                    <a href="/tech.html" style="
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 0.4rem;
+                        font-size: 0.95rem;
+                        color: #FFC107;
+                        text-decoration: none;
+                        font-weight: 600;
+                        border-bottom: 2px solid transparent;
+                        transition: border-color 0.2s;
+                    " onmouseover="this.style.borderColor='#FFC107';" onmouseout="this.style.borderColor='transparent';">
+                        View full LV Tech portal →
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
         <p>&copy; 2026 Lee Vaakki™ Pvt Ltd. All rights reserved.</p>
     </footer>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAoyqpMIqxdDScXeg5k6jDkVOS0WFbI1Bg",
+            authDomain: "lee-vaakki-pvt-ltd-33e4e.firebaseapp.com",
+            projectId: "lee-vaakki-pvt-ltd-33e4e",
+            storageBucket: "lee-vaakki-pvt-ltd-33e4e.firebasestorage.app",
+            messagingSenderId: "57170940897",
+            appId: "1:57170940897:web:9af934a0a55b7b5f5cf8a0"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        const loginBtn = document.getElementById('google-login-btn');
+        if (loginBtn) {
+            loginBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                try {
+                    const result = await signInWithPopup(auth, provider);
+                    const user = result.user;
+                    loginBtn.innerText = `Hello, ${user.displayName.split(' ')[0]}`;
+                    loginBtn.style.color = 'var(--primary)';
+                    // You can save token to localStorage or handle auth state here
+                } catch (error) {
+                    console.error('Google sign-in failed', error);
+                    alert('Google sign-in failed. Please try again.');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
